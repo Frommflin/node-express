@@ -1,0 +1,131 @@
+:root{
+    --primary: #009688;
+    --primary-dark: #00796B;
+    --primary-surface: rgba(0,150,136,0.24);
+    --surface: #121212;
+    --text: #FFFFFF;
+}
+
+body{
+    background-color: var(--surface);
+    color: var(--text);
+    margin: 0;
+}
+
+h1, h3{
+    color: var(--primary);
+}
+
+header > h1{
+    background-color: var(--primary-surface);
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+}
+
+nav{
+    background-color: var(--primary);
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 30px;
+}
+
+nav a{
+    text-decoration: none;
+    color: var(--text);
+    margin: 0px 30px;
+}
+
+.active{
+    text-decoration: underline;
+}
+
+/* BUTTONS */
+.btn {
+    background-color: var(--primary-surface);
+    border-color: var(--primary-dark);
+}
+.btn:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem var(--primary-dark);
+}
+.btn:hover {
+    background-color: var(--primary-dark);
+}
+
+/* HOME */
+
+.content{
+    width: 800px;
+    background-color: var(--primary-surface);
+    margin: 25px auto;
+    padding: 5px 20px;
+    border-radius: 10px;
+}
+
+
+/* LOG IN and REGISTER */
+.accountForm{
+    width: 400px;
+    margin: 200px 100px;
+}
+
+.accountForm .input-group{
+    margin-bottom: 10px;
+}
+
+.accountForm .input-group-text{
+    background-color: var(--primary-surface);
+    color: var(--primary);
+}
+
+#loginForm .input-group-text{
+    width: 135px;
+}
+
+#registerForm .input-group-text{
+    width: 150px;
+}
+
+/* LIST */
+#listContent{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.card{
+    background-color: var(--primary-surface);
+    width: 400px;
+    padding: 5px;
+}
+
+.flexrow{
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0px;
+}
+
+.points{
+    display: flex;
+    justify-content: space-around;
+}
+
+.pros, .cons {
+    width: 45%;
+    border: 1px solid var(--primary)
+}
+
+ul{
+    padding-left: 13px;
+    font-size: 11px;
+}
+
+.pros ul{
+    list-style-type: '+';
+}
+
+.cons ul{
+    list-style-type: '-';
+}

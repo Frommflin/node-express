@@ -1,4 +1,4 @@
-const express = require("express")
+const express = require('express')
 const connectDB = require('./config/db')
 const dotenv = require('dotenv').config()
 
@@ -7,8 +7,8 @@ const port = 3000
 
 connectDB();
 
-app.get("/", (req, res) => {
-  res.send("Hello World!")
+app.get('/', (req, res) => {
+  res.send('Hello World!')
 })
 
 app.listen(port, () => {
