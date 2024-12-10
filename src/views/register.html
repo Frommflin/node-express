@@ -22,18 +22,14 @@
             </div>
         </nav>
     </header>
-    <form id="registerForm" class="accountForm">
+    <form id="registerForm" class="accountForm" method="POST" action="/register">
         <div class="input-group">
             <span class="input-group-text" id="username">Användarnamn</span>
-            <input type="text" name="user" class="form-control" placeholder="Användarnamn" aria-describedby="username">
+            <input type="text" name="username" class="form-control" placeholder="Användarnamn" aria-describedby="username">
         </div>
         <div class="input-group">
             <span class="input-group-text" id="userpwd">Lösenord</span>
             <input type="password" name="password" class="form-control" placeholder="Lösenord" aria-describedby="userpwd">
-        </div>
-        <div class="input-group">
-            <span class="input-group-text" id="userpwd2">Bekräfta lösenord</span>
-            <input type="password" name="password2" class="form-control" placeholder="Lösenord" aria-describedby="userpwd2">
         </div>
         <button type="submit" class="btn">Skapa konto</button>
     </form>
