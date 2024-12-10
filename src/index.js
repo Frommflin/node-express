@@ -26,6 +26,7 @@ app.get('/register', (req, res) => {
 })
 
 app.use('/register', require('./routes/userRoutes'))
+app.use('/login', require('./routes/authRoutes'))
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}!`)
