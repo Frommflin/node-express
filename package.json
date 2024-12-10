@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \\\"Error: no test specified\\\" && exit 1"
+    "test": "echo \\\"Error: no test specified\\\" && exit 1",
+    "start": "node src/index.js",
+    "devstart": "nodemon src/index.js",
+    "serverstart": "SET DEBUG=node-express:* & npm run devstart"
   },
   "author": "Klara Frommelin",
   "license": "ISC",
@@ -11,6 +14,7 @@
   "dependencies": {
     "dotenv": "^16.4.6",
     "express": "^4.21.1",
-    "mongoose": "^8.8.3"
+    "mongoose": "^8.8.3",
+    "nodemon": "^3.1.7"
   }
 }
