@@ -43,3 +43,8 @@ function logOut(){
     sessionStorage.removeItem('username')
     window.location.replace('/login')
 }
+
+function fillUser(){
+    let username = sessionStorage.getItem('username')
+    document.getElementById('loggedInUser').value = username
+}
