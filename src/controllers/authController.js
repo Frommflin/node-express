@@ -11,8 +11,6 @@ const login = async (req, res, next) => {
         if(!pwdIsValid) return res.status(401).send("Invalid password")
 
         res.status(200).json(user)
-        // res.redirect('/list')
-        // next()
     }
     catch (error){
         console.error(error.message)

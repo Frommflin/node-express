@@ -1,3 +1,5 @@
+window.addEventListener('DOMContentLoaded', checkUser, false)
+
 document.getElementById('loginForm').addEventListener('submit', async function(event){ 
     event.preventDefault()
 
@@ -28,3 +30,11 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
         console.error(error.message)
     }
 })
+
+function checkUser(){
+    if("username" in sessionStorage) { //user is logged in
+        document.getElementById('accountNav').innerHTML = '<a id="logout" href="#" class="active">Logga ut</a>'
+    } else { //user is not logged in
+        document.getElementById('accountNav').innerHTML = '<a href="/login" class="active">Logga in</a><a href="/register">Registrera</a>'
+    }
+}
