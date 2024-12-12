@@ -17,15 +17,6 @@ app.use(express.static(path.join(__dirname, '/public')))
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/views/home.html')
 })
-app.get('/list', (req, res) => {
-  res.sendFile(__dirname + '/views/list.html')
-})
-app.get('/login', (req, res) => {
-  res.sendFile(__dirname + '/views/login.html')
-})
-app.get('/register', (req, res) => {
-  res.sendFile(__dirname + '/views/register.html')
-})
 
 app.use('/register', require('./routes/userRoutes'))
 app.use('/login', require('./routes/authRoutes'))
