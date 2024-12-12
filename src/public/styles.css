@@ -12,7 +12,7 @@ body{
     margin: 0;
 }
 
-h1, h3{
+h1, h2, h3{
     color: var(--primary);
 }
 
@@ -41,6 +41,10 @@ nav a{
 }
 
 /* BUTTONS */
+button a{
+    text-decoration: none;
+    color: var(--text);
+}
 .btn {
     background-color: var(--primary-surface);
     border-color: var(--primary-dark);
@@ -50,6 +54,19 @@ nav a{
 }
 .btn:hover {
     background-color: var(--primary-dark);
+}
+.topBtn{
+    margin: 20px 0 30px 20px;
+}
+
+/* FORMS */
+form .input-group{
+    margin-bottom: 10px;
+}
+
+form .input-group-text{
+    background-color: var(--primary-surface);
+    color: var(--primary);
 }
 
 /* HOME */
@@ -69,15 +86,6 @@ nav a{
     margin: 200px 100px;
 }
 
-.accountForm .input-group{
-    margin-bottom: 10px;
-}
-
-.accountForm .input-group-text{
-    background-color: var(--primary-surface);
-    color: var(--primary);
-}
-
 #loginForm .input-group-text{
     width: 135px;
 }
@@ -92,7 +100,6 @@ nav a{
     flex-wrap: wrap;
     justify-content: space-around;
     gap: 20px;
-    margin-top: 30px;
 }
 
 .card{
@@ -128,4 +135,14 @@ ul{
 
 .cons ul{
     list-style-type: '-';
+}
+
+/* NEW ITEMS */
+#newItemForm{
+    width: 600px;
+    margin-left: 100px;
+}
+
+#newItemForm .input-group-text{
+    width: 100px;
 }
