@@ -33,8 +33,13 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
 
 function checkUser(){
     if("username" in sessionStorage) { //user is logged in
-        document.getElementById('accountNav').innerHTML = '<a id="logout" href="#" class="active">Logga ut</a>'
+        document.getElementById('accountNav').innerHTML = '<a href="#" class="active" onclick="logOut()">Logga ut</a>'
     } else { //user is not logged in
         document.getElementById('accountNav').innerHTML = '<a href="/login" class="active">Logga in</a><a href="/register">Registrera</a>'
     }
+}
+
+function logOut(){
+    sessionStorage.removeItem('username')
+    window.location.replace('/login')
 }
