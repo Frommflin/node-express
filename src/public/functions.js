@@ -71,7 +71,9 @@ async function getAnimals(){
             str += `<div class="flexrow">`
             str += `<h6>Typ: ${animal.type}</h6>`
             str += `<div>`
-            str += `<button class="btn btn-sm">Redigera</button>`
+            str += `<button class="btn btn-sm">`
+            str += `<a href="/list/edit">Redigera</a>`
+            str += `</button>`
             str += `<button class="btn btn-sm" onclick="deleteItem('${animal._id}')">`
             str += `Ta Bort`
             str += `</button>`
