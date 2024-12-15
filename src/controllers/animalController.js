@@ -39,6 +39,20 @@ const getAnimal = async (req, res) =>{}
 
 const updateAnimal = async (req, res) =>{}
 
-const deleteAnimal = async (req, res) =>{}
+const deleteAnimal = async (req, res) =>{
+    const { id } = req.params
 
-module.exports = { createAnimal, getAnimals }
+  try {
+    const animal = await Animal.findByIdAndDelete(id)
+    if (!animal) {
+      return res.status(404).json({ message: 'Could not find animal'})
+    }
+    res.status(200)
+    res.redirect('/list')
+  } catch (error) {
+    console.error(error.message)
+    res.status(500).send('Server error')
+  }
+}
+
+module.exports = { createAnimal, getAnimals, deleteAnimal }

@@ -72,7 +72,9 @@ async function getAnimals(){
             str += `<h6>Typ: ${animal.type}</h6>`
             str += `<div>`
             str += `<button class="btn btn-sm">Redigera</button>`
-            str += `<button class="btn btn-sm">Ta bort</button>`
+            str += `<button class="btn btn-sm" onclick="deleteItem('${animal._id}')">`
+            str += `Ta Bort`
+            str += `</button>`
             str += `</div>`
             str += `</div>`
             str += `<div class="points">`
@@ -97,4 +99,12 @@ async function getAnimals(){
     } catch (error) {
         console.error(error.message)
     }
+}
+
+async function deleteItem(id){
+    const response = await fetch('/list/delete/'+id, {
+        method: "DELETE",
+    })
+
+    window.location.replace('/list')
 }
