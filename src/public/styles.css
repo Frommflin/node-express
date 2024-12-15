@@ -137,12 +137,12 @@ ul{
     list-style-type: '- ';
 }
 
-/* NEW ITEMS */
-#newItemForm{
+/* Item Forms (new and edit) */
+.itemForm{
     width: 600px;
     margin-left: 100px;
 }
 
-#newItemForm .input-group-text{
+.itemForm .input-group-text{
     width: 100px;
 }
