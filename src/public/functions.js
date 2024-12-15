@@ -118,7 +118,6 @@ function openEditItem(id){
 
 async function getAnimal(){
     let id = sessionStorage.getItem('itemId')
-    sessionStorage.removeItem('itemId')
 
     try {
         const response = await fetch('/list/item/' + id)
@@ -139,5 +138,32 @@ async function getAnimal(){
     } catch (error) {
         console.error(error.message)
         window.location.replace('/list')
+    }
+}
+
+async function editItem(){ 
+    let id = document.querySelector('input[name="id"]').value
+    let changes = {
+        changedPros: document.querySelector('textarea[name="pros"]').value,
+        changedCons: document.querySelector('textarea[name="cons"]').value
+    }
+    
+    try {
+        const response = await fetch('/list/edit/'+id, {
+            method: 'PATCH',
+            body: JSON.stringify(changes),
+            headers: {
+              'Content-Type': 'application/json'
+            }
+        })
+
+        if (!response.ok) {
+            throw new Error(`Response status: ${response.status}`)
+        }
+
+        sessionStorage.removeItem('itemId')
+        window.location.replace('/list')
+    } catch (error) {
+        console.error(error.message)
     }
 }

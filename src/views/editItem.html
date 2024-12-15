@@ -22,7 +22,7 @@
     <button class="btn topBtn">
         <a href="/list">Avbryt</a>
     </button>
-    <form id="editItemForm" class="itemForm">
+    <form id="editItemForm" class="itemForm" onsubmit="event.preventDefault();editItem()">
         <h2>Redigera <span id="title"></span></h2>
         <h3>Typ: <span id="type"></span></h3>
         <div class="input-group">
