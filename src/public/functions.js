@@ -71,8 +71,8 @@ async function getAnimals(){
             str += `<div class="flexrow">`
             str += `<h6>Typ: ${animal.type}</h6>`
             str += `<div>`
-            str += `<button class="btn btn-sm">`
-            str += `<a href="/list/edit">Redigera</a>`
+            str += `<button class="btn btn-sm" onclick="openEditItem('${animal._id}')">`
+            str += `Redigera`
             str += `</button>`
             str += `<button class="btn btn-sm" onclick="deleteItem('${animal._id}')">`
             str += `Ta Bort`
@@ -109,4 +109,35 @@ async function deleteItem(id){
     })
 
     window.location.replace('/list')
+}
+
+function openEditItem(id){
+    sessionStorage.setItem('itemId', id)
+    window.location.replace('/list/edit')
+}
+
+async function getAnimal(){
+    let id = sessionStorage.getItem('itemId')
+    sessionStorage.removeItem('itemId')
+
+    try {
+        const response = await fetch('/list/item/' + id)
+
+        if (!response.ok) {
+            throw new Error(`Response status: ${response.status}`)
+        }
+
+        const animal = await response.json()
+        
+        document.getElementById('title').innerHTML = animal.breed
+        document.getElementById('type').innerHTML = animal.type
+        document.querySelector("textarea[name='pros']").value = animal.pros
+        document.querySelector("textarea[name='cons']").value = animal.cons
+        document.querySelector("input[name='id']").value = animal._id
+
+        
+    } catch (error) {
+        console.error(error.message)
+        window.location.replace('/list')
+    }
 }
