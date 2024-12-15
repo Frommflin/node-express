@@ -16,7 +16,24 @@ const createAnimal = async (req, res, next) =>{
     }
 }
 
-const getAnimals = async (req, res) =>{}
+const getAnimals = async (req, res) =>{
+    const { username } = req.params
+
+    if( username == "" || username == "undefined" ){
+        return res.status(400).json({ error: 'Error connectng to user. Try logging in again and  then try again.' });
+    }
+
+    try{
+        const animals = await Animal.find({
+            user: username
+        })
+        res.status(200).json(animals)
+    }
+    catch (error){
+        console.error(error.message)
+        res.status(500).send('Server error')
+    }
+}
 
 const getAnimal = async (req, res) =>{}
 
@@ -24,4 +41,4 @@ const updateAnimal = async (req, res) =>{}
 
 const deleteAnimal = async (req, res) =>{}
 
-module.exports = { createAnimal }
+module.exports = { createAnimal, getAnimals }

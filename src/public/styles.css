@@ -130,11 +130,11 @@ ul{
 }
 
 .pros ul{
-    list-style-type: '+';
+    list-style-type: '+ ';
 }
 
 .cons ul{
-    list-style-type: '-';
+    list-style-type: '- ';
 }
 
 /* NEW ITEMS */

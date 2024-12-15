@@ -48,3 +48,53 @@ function fillUser(){
     let username = sessionStorage.getItem('username')
     document.getElementById('loggedInUser').value = username
 }
+
+async function getAnimals(){
+    let username = sessionStorage.getItem('username')
+    try {
+        const response = await fetch('/list/'+username)
+
+        if (!response.ok) {
+            throw new Error(`Response status: ${response.status}`)
+        }
+
+        const animals = await response.json()
+
+        let str = ``
+        animals.forEach(animal => {
+
+            const pros = animal.pros.split(',')
+            const cons = animal.cons.split(',')
+
+            str += `<div class="card">`
+            str += `<h3>${animal.breed}</h3>`
+            str += `<div class="flexrow">`
+            str += `<h6>Typ: ${animal.type}</h6>`
+            str += `<div>`
+            str += `<button class="btn btn-sm">Redigera</button>`
+            str += `<button class="btn btn-sm">Ta bort</button>`
+            str += `</div>`
+            str += `</div>`
+            str += `<div class="points">`
+            str += `<div class="pros">`
+            str += `<ul>`
+            pros.forEach(point =>{
+                str += `<li>${point}</li>`
+            })
+            str += `</ul>`
+            str += `</div>`
+            str += `<div class="cons">`
+            str += `<ul>`
+            cons.forEach(point =>{
+                str += `<li>${point}</li>`
+            })
+            str += `</ul>`
+            str += `</div>`
+            str += `</div>`
+            str += `</div>`
+        });
+        document.getElementById('listContent'). innerHTML = str;
+    } catch (error) {
+        console.error(error.message)
+    }
+}
