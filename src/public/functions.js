@@ -21,15 +21,34 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
             throw new Error(`Response status: ${response.status}`)
         }
 
-        const user = await response.json()
+        const userInfo = await response.json()
 
-        sessionStorage.setItem('username', user.username)
-        window.location.replace('/list')
+        sessionStorage.setItem('username', userInfo.user.username)
+        sessionStorage.setItem('token', userInfo.token)
+        gotToList()
 
     } catch (error) {
         console.error(error.message)
     }
 })
+
+async function gotToList(){
+    const token = sessionStorage.getItem('token')
+
+    const response = await fetch('/list/auth', {
+        method: "GET",
+        headers: {
+          "Authorization": 'Bearer ' + token
+        }
+    })
+
+    const json = await response.json()
+    if(json.status != 200){
+        window.location.replace('/list/unauthorized')
+    } else {
+        window.location.replace('/list')
+    }
+}
 
 function checkUser(){
     if("username" in sessionStorage) { //user is logged in
@@ -41,6 +60,7 @@ function checkUser(){
 
 function logOut(){
     sessionStorage.removeItem('username')
+    sessionStorage.removeItem('token')
     window.location.replace('/login')
 }
 

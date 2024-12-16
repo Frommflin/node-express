@@ -2,11 +2,18 @@ const express = require('express')
 const router = express.Router()
 const { createAnimal, getAnimals, getAnimal, updateAnimal, deleteAnimal } = require('../controllers/animalController')
 const path = require('path')
+const authenticate = require('../middleware/authentication')
 
 router.use(express.static(path.join(global.rootDir, '/public')))
 
+router.get('/auth', authenticate, (req, res) => {
+    res.json({status: res.statusCode})
+})
 router.get('/', (req, res) => {
     res.sendFile(global.rootDir + '/views/list.html')
+})
+router.get('/unauthorized', (req, res) => {
+    res.sendFile(global.rootDir + '/views/notAllowed.html')
 })
 router.get('/newItem', (req, res) => {
     res.sendFile(global.rootDir + '/views/newItem.html')
